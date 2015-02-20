@@ -5,7 +5,7 @@ To create the movie trailer website, download the following files:
 	- main.py
 	- movie.py
 	- fresh_tomatoes.py
-	- movie.tsv
+	- movies.tsv
 
 Open a terminal.  
   
