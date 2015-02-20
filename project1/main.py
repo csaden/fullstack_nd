@@ -14,7 +14,7 @@ def main(args=None):
 			
 			movie_data = row.split("\t")
 			
-			# unpack the data using *
+			# create movie instance and unpack data using *
 			movie = Movie(*movie_data)
 			
 			movies_list.append(movie)
