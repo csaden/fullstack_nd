@@ -1,0 +1,860 @@
+
+<head>
+    <meta charset="utf-8">
+    <title>Fresh Tomatoes!</title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .movie-tile:hover {
+            background-color: #EEE;
+            cursor: pointer;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="99k3u9ay1gs" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTkxNzI3ODI4Nl5BMl5BanBnXkFtZTgwMjkwMjY4MjE@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>American Sniper</h2>
+    <h3>2014</h3>
+    <p>2/6/2014 @ 7:10 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="0vxOhd4qlnA" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjIxNTU4MzY4MF5BMl5BanBnXkFtZTgwMzM4ODI3MjE@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Interstellar</h2>
+    <h3>2014</h3>
+    <p>11/23/2014 @ 5:30 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="eUdM9vrCbow" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjIyNTQ5NjQ1OV5BMl5BanBnXkFtZTcwODg1MDU4OA@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Django Unchained</h2>
+    <h3>2012</h3>
+    <p>2/14/2013 @ 7:30 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="w918Eh3fij0" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTc3MjI0MjM0NF5BMl5BanBnXkFtZTcwMTYxMTQ1OA@@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Argo</h2>
+    <h3>2012</h3>
+    <p>11/23/2012 @ 5:00 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="GokKUqLcvD8" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTk4ODQzNDY3Ml5BMl5BanBnXkFtZTcwODA0NTM4Nw@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Dark Knight Rises</h2>
+    <h3>2012</h3>
+    <p>7/22/2012 @ 3:10 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="gjNCkxnT-xE" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BNjM0NTYyNTkwNF5BMl5BanBnXkFtZTcwMzQwOTUzNw@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Monsieur Lazhur</h2>
+    <h3>2011</h3>
+    <p>4/12/2012 @ 7:00 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="5NYt1qirBWg" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTY2MTk3MDQ1N15BMl5BanBnXkFtZTcwMzI4NzA2NQ@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Harry Potter and the Deathly Hallows Part 2</h2>
+    <h3>2011</h3>
+    <p>8/6/2011 @ 1:00 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="OlhLOWTnVoQ" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTc2NjMzOTE3Ml5BMl5BanBnXkFtZTcwMDE0OTc5Mw@@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>127 Hours</h2>
+    <h3>2010</h3>
+    <p>12/25/2011 @ 9:20 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="C6RU5y2fU6s" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BNTUwODQyNjM0NF5BMl5BanBnXkFtZTcwNDMwMTU1Mw@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Expendables</h2>
+    <h3>2010</h3>
+    <p>8/16/2010 @ 1:40 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="I0hXhGt5XPg" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTg0NjEwNjUxM15BMl5BanBnXkFtZTcwMzk0MjQ5Mg@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Sherlock Holmes</h2>
+    <h3>2009</h3>
+    <p>NA @ NA
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="66TuSJo4dZM" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Inception</h2>
+    <h3>2010</h3>
+    <p>NA @ 1:15 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="v2uV0_1C4UM" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BNDY3NzQ0NjYxM15BMl5BanBnXkFtZTcwMDkzODM2Mw@@._V1_SY317_CR1,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>The Sorcerer's Apprentice</h2>
+    <h3>2010</h3>
+    <p>7/20/2012 @ 2:20 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="9POCgSRVvf0" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTMwNjAxMTc0Nl5BMl5BanBnXkFtZTcwODc3ODk5Mg@@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Alice in Wonderland</h2>
+    <h3>2010</h3>
+    <p>3/5/2010 @ 9:45 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="YzfEH0UPEBo" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTQ2OTE1Mjk0N15BMl5BanBnXkFtZTcwODE3MDAwNA@@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Harry Potter and the Deathly Hallows Part 1</h2>
+    <h3>2010</h3>
+    <p>NA @ NA
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="JYLdTuL9Wjw" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BNzU3NDg4NTAyNV5BMl5BanBnXkFtZTcwOTg2ODg1Mg@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Harry Potter and the Half Blood Prince</h2>
+    <h3>2009</h3>
+    <p>8/2/2009 @ 7:10 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="vDp-08uNH0Y" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTg3MjQ5OTY4M15BMl5BanBnXkFtZTcwNjk1MDU1MQ@@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Vantage Point</h2>
+    <h3>2008</h3>
+    <p>2/23/2008 @ 5:15 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="K0SKf0K3bxg" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTgxMjgyMTcyNF5BMl5BanBnXkFtZTcwMDg1MTU1MQ@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Juno</h2>
+    <h3>2007</h3>
+    <p>1/9/2008 @ 9:45 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="UHl-6uH8MUQ" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTgwMDgwMDc4MF5BMl5BanBnXkFtZTYwOTU3MDM4._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Charlie Wilson's War</h2>
+    <h3>2007</h3>
+    <p>12/25/2007 @ 9:40 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="2LAuzT_x8Ek" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTAwNDEyODU1MjheQTJeQWpwZ15BbWU2MDc3NDQwNw@@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Into the Wild</h2>
+    <h3>2007</h3>
+    <p>10/13/2007 @ 6:40 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="N6J2oiKJr-A" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTgzNjMwOTM3N15BMl5BanBnXkFtZTcwMzA5MDY0MQ@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>The Bourne Ultimatum</h2>
+    <h3>2007</h3>
+    <p>8/17/2007 @ 6:15 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="CQAX-YwX6iM" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTM0NTczMTUzOV5BMl5BanBnXkFtZTYwMzIxNTg3._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Harry Potter and the Order of the Phoenix</h2>
+    <h3>2007</h3>
+    <p>7/11/2007 @ 12:01 AM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="XnwmUZuF5OY" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTQwNjU5MzUzNl5BMl5BanBnXkFtZTYwMzc1MTI3._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Transformers</h2>
+    <h3>2007</h3>
+    <p>7/2/2007 @ 8:30 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="L-EyG12LxME" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTMyNTc1NzY5MV5BMl5BanBnXkFtZTcwNDM4NTQzMw@@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Ocean's Thirteen</h2>
+    <h3>2007</h3>
+    <p>6/8/2007 @ 7:00 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="PetrAmq9fcw" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjIyNjkxNzEyMl5BMl5BanBnXkFtZTYwMjc3MDE3._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Pirates of the Caribbean: At World's End</h2>
+    <h3>2007</h3>
+    <p>5/28/2007 @ 9:50 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="PCmMLfXdURs" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BODUwMDc5Mzc5M15BMl5BanBnXkFtZTcwNDgzOTY0MQ@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Spider-Man 3</h2>
+    <h3>2007</h3>
+    <p>5/12/2007 @ 10:15 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="EqYiSlkvRuw" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTU3ODg2NjQ5NF5BMl5BanBnXkFtZTcwMDEwODgzMQ@@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Pan's Labyrinth</h2>
+    <h3>2006</h3>
+    <p>2/18/2007 @ 2:10 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="Q9CFcTY_pik" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTc2MDU1ODQ0MV5BMl5BanBnXkFtZTcwMjk2NDA2OQ@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Children of Men</h2>
+    <h3>2006</h3>
+    <p>1/14/2007 @ 10:05 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="GaKGCLTmqTg" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTU5MjExMzA1Nl5BMl5BanBnXkFtZTgwMzIxNzQxMTE@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>The Good Shepherd</h2>
+    <h3>2006</h3>
+    <p>11/26/2006 @ 10:00 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="_xcZTtlGweQ" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTQ5NjQ0NDI3NF5BMl5BanBnXkFtZTcwNDI0MjEzMw@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>The Pursuit of Happyness</h2>
+    <h3>2006</h3>
+    <p>12/23/2006 @ 9:45 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="SpIK6eqop18" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTM1MjQyMDkzN15BMl5BanBnXkFtZTcwNzAyNTQzMQ@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>The Illusionist</h2>
+    <h3>2006</h3>
+    <p>9/2/2006 @ 8:10 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="wvwVkllXT80" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTgzNTgzODU0NV5BMl5BanBnXkFtZTcwMjEyMjMzMQ@@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Little Miss Sunshine</h2>
+    <h3>2006</h3>
+    <p>8/22/2006 @ 2:30 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="ozk0-RHXtFw" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTcwODc1MTMxM15BMl5BanBnXkFtZTYwMDg1NzY3._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Pirates of the Caribbean: Dead Man's Chest</h2>
+    <h3>2006</h3>
+    <p>7/7/2006 @ 9:35 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="zMba3fckhuQ" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjIxMjQyMTc3Nl5BMl5BanBnXkFtZTcwMTA1MDUzMw@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>The Da Vinci Code</h2>
+    <h3>2006</h3>
+    <p>5/20/2006 @ 8:45 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="kajEhbglG7k" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjI1NTg2ODA2Nl5BMl5BanBnXkFtZTcwMDc2MjEzMw@@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>X-Men: The Last Stand</h2>
+    <h3>2006</h3>
+    <p>5/26/2006 @ 10:45 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="ssWbGKTgXFc" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjExMDY1MTI5MF5BMl5BanBnXkFtZTcwNDE2NTQzMw@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Mission: Impossible 3</h2>
+    <h3>2006</h3>
+    <p>5/6/2006 @ 8:15 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="3WRxsmqercg" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTcxMDE4NTU4OF5BMl5BanBnXkFtZTcwMjg4NjQzMQ@@._V1_SY317_CR5,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Inside Man</h2>
+    <h3>2006</h3>
+    <p>4/14/2006 @ 9:30 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="cx8ZWK0rUWA" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTUzNDQzMTk5OF5BMl5BanBnXkFtZTcwNDY0MjEzMQ@@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>The Ringer</h2>
+    <h3>2005</h3>
+    <p>1/2/2006 @ 9:45 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="pYcGFLgJ8Uo" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTc0NTUwMTU5OV5BMl5BanBnXkFtZTcwNjAwNzQzMw@@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>The Chronicles of Narnia: the Lion, the Witch, and the Wardrobe</h2>
+    <h3>2005</h3>
+    <p>12/10/2005 @ 8:30 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="JEihaz6FcWs" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjAxNzUyOTM4MV5BMl5BanBnXkFtZTgwNjkxMzcxMTE@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Jarhead</h2>
+    <h3>2005</h3>
+    <p>11/6/2005 @ 4:10 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="aFhCLiGvb08" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTI1NDMyMjExOF5BMl5BanBnXkFtZTcwOTc4MjQzMQ@@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Harry Potter and the Goblet of Fire</h2>
+    <h3>2005</h3>
+    <p>11/17/2005 @ 11:59 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="hysIlCVLejk" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTU5MzU2MzY2Nl5BMl5BanBnXkFtZTgwOTM4NzMxMDE@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>The 40 Year Old Virgin</h2>
+    <h3>2005</h3>
+    <p>9/25/2005 @ 4:35 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="r4iTjavIkbk" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTg1MTYyMDE2NF5BMl5BanBnXkFtZTcwNTk1NTAzMQ@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>The Constant Gardener</h2>
+    <h3>2005</h3>
+    <p>9/10/2005 @ 9:55 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="ZtyC3jFh6eM" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTAwNjk0NjM1ODReQTJeQWpwZ15BbWU3MDc1NjIxMzM@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>The Island</h2>
+    <h3>2005</h3>
+    <p>7/24/2005 @ 10:00 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="jyB4s9eox2o" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BNjcxMjg1Njg2NF5BMl5BanBnXkFtZTcwMjQ4NzMzMw@@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Charlie and the Chocolate Factory</h2>
+    <h3>2005</h3>
+    <p>7/22/2005 @ 9:45 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="ZeUSo8voIXM" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTc4NTUyNzU4MV5BMl5BanBnXkFtZTcwMzcyMTkyMQ@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Wedding Crashers</h2>
+    <h3>2005</h3>
+    <p>7/18/2005 @ 7:20 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="MJYnHA2OzfA" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BNDUyODAzNDI1Nl5BMl5BanBnXkFtZTcwMDA2NDAzMw@@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>War of the Worlds</h2>
+    <h3>2005</h3>
+    <p>7/2/2005 @ 10:45 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="Erk9JafLb3k" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTI0MjczNTU3OF5BMl5BanBnXkFtZTcwNjk3NzcyMQ@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Bewitched</h2>
+    <h3>2005</h3>
+    <p>6/26/2006 @ 9:40 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="vak9ZLfhGnQ" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BNTM3OTc0MzM2OV5BMl5BanBnXkFtZTYwNzUwMTI3._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Batman Begins</h2>
+    <h3>2005</h3>
+    <p>6/15/2005 @ 12:20 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="COSHyRpfU0s" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTc1NTQyNDk2NV5BMl5BanBnXkFtZTcwOTE2OTQzMw@@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>The Longest Yard</h2>
+    <h3>2005</h3>
+    <p>6/11/2005 @ 7:25 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="durNwe9pL0E" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BOTk1OTA1MjIyNV5BMl5BanBnXkFtZTcwODQxMTkyMQ@@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Crash</h2>
+    <h3>2004</h3>
+    <p>5/10/2005 @ 9:50 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="uCuqGhfr5Ak" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTg3MjMxNDUzNV5BMl5BanBnXkFtZTcwNTM2NzgyMQ@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>The Interpreter</h2>
+    <h3>2005</h3>
+    <p>4/30/2005 @ 5:00 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="r0PDOQglpDQ" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTI2NjUyMDUyMV5BMl5BanBnXkFtZTcwMzU0OTkyMQ@@._V1_SY317_CR4,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Sin City</h2>
+    <h3>2005</h3>
+    <p>4/9/2005 @ 9:45 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="N8u2L-CqHX8" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BNDYyNjY1NjY1M15BMl5BanBnXkFtZTcwNjk5MDczMw@@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Robots</h2>
+    <h3>2005</h3>
+    <p>3/13/2005 @ 7:50 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="AIzbwV7on6Q" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTU2NTA5NzI0N15BMl5BanBnXkFtZTcwMjUxMjYxMg@@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Slumdog Millionaire</h2>
+    <h3>2008</h3>
+    <p>2/26/2005 @ 11:20 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="qZzfxL90100" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTI2MzQyNTc1M15BMl5BanBnXkFtZTYwMjExNjc3._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Hotel Rwanda</h2>
+    <h3>2004</h3>
+    <p>2/19/2005 @ 9:45 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="xPqVNMdx2cU" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTQ4Nzc4NTc0NV5BMl5BanBnXkFtZTcwMTkyNjcyMQ@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>In Good Company</h2>
+    <h3>2004</h3>
+    <p>1/15/2005 @ 10:05 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="jVfB6GhlwIM" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTM1NTU0NTE4MV5BMl5BanBnXkFtZTcwMTQ0MjEzMw@@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>The Polar Express</h2>
+    <h3>2004</h3>
+    <p>12/10/2004 @ 9:15 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="XWB1HGnA3tA" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjE3MDM4NTg0NV5BMl5BanBnXkFtZTcwNjI4MTczMw@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Lemony Snicket's A Series of Unfortunate Events</h2>
+    <h3>2004</h3>
+    <p>12/19/2004 @ 7:30 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="ZLOwRK2rKJY" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTU1ODkyNDkwOV5BMl5BanBnXkFtZTcwNzI2MTcyMQ@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>After the Sunset</h2>
+    <h3>2004</h3>
+    <p>11/24/2004 @ 9:35 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="4i1SlznIaZk" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTM5NDM3NDc1OF5BMl5BanBnXkFtZTcwNzE1MzcyMQ@@._V1_SY317_CR5,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Closer</h2>
+    <h3>2004</h3>
+    <p>1/7/2005 @ 9:45 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="HYdiGm7im1I" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjAwMjIyNjU4NV5BMl5BanBnXkFtZTcwNjE3NjYyMQ@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>The Forgotten</h2>
+    <h3>2004</h3>
+    <p>10/10/2004 @ 4:10 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="9BDx6ZPHV4w" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjE3NjM5OTMxMV5BMl5BanBnXkFtZTcwOTIzMTQyMw@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Collateral</h2>
+    <h3>2004</h3>
+    <p>8/18/2004 @ 7:10 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="qH-FBPRf7NQ" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BNjYwNTA3MDIyMl5BMl5BanBnXkFtZTYwMjIxNjA3._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Napoleon Dynamite</h2>
+    <h3>2004</h3>
+    <p>8/7/2004 @ 4:10 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="kR8WYO9Lj9g" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTI3MTY2MTQxNV5BMl5BanBnXkFtZTcwNjk2NDYyMQ@@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>The Manchurian Candidate</h2>
+    <h3>2004</h3>
+    <p>8/5/2004 @ 9:50 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="cwP5E15VzRM" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BNDQyMTg3Mzk4MV5BMl5BanBnXkFtZTcwMDM4NzUyMQ@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Harold & Kumar Go to White Castle</h2>
+    <h3>2004</h3>
+    <p>8/4/2004 @ 7:20 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="Kq_B_ukrGKo" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTM1NTEzODQ1NV5BMl5BanBnXkFtZTcwNDUyMDYyMQ@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>The Village</h2>
+    <h3>2004</h3>
+    <p>7/31/2004 @ 9:50 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="s0f3JeDVeEo" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTQwNzI5NTQ0OF5BMl5BanBnXkFtZTYwMTI3Mjk2._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>I, Robot</h2>
+    <h3>2004</h3>
+    <p>7/26/2004 @ 7:00 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="je18yGc6jXk" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTQ1ODM1ODU1N15BMl5BanBnXkFtZTcwMjI5MzA3NA@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Saved!</h2>
+    <h3>2004</h3>
+    <p>7/26/2004 @ 7:00 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="DlM2CWNTQ84" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjE0Njc1NDYzN15BMl5BanBnXkFtZTcwNjAxMzYyMQ@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Spider-Man 2</h2>
+    <h3>2004</h3>
+    <p>6/30/2004 @ 8:00 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="qUpzAw5Kw7M" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTIwMzE2MjM4MV5BMl5BanBnXkFtZTYwNjA1OTY3._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Dodgeball: A True Underdog Story</h2>
+    <h3>2004</h3>
+    <p>6/20/2004 @ 9:00 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="lAxgztbYDbs" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTY4NTIwODg0N15BMl5BanBnXkFtZTcwOTc0MjEzMw@@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Harry Potter and the Prisoner of Azkaban</h2>
+    <h3>2004</h3>
+    <p>6/4/2004 @ 5:30 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="Ku_IseK3xTc" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTU1NTA3NzMwOV5BMl5BanBnXkFtZTcwNzEzMTEzMw@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>The Day After Tomorrow</h2>
+    <h3>2004</h3>
+    <p>5/28/2004 @ 1:15 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="V6X5ti4YlG8" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTk4MTMwNjI4M15BMl5BanBnXkFtZTcwMjExMzUyMQ@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Shrek 2</h2>
+    <h3>2004</h3>
+    <p>5/25/2004 @ 9:00 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="Voai-4GS848" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTk5MzU1MDMwMF5BMl5BanBnXkFtZTcwNjczODMzMw@@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Troy</h2>
+    <h3>2004</h3>
+    <p>5/16/2004 @ 9:00 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="KAOmTMCtGkI" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjE1MDQ4MjI1OV5BMl5BanBnXkFtZTcwNzcwODAzMw@@._V1_SY317_CR5,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Mean Girls</h2>
+    <h3>2004</h3>
+    <p>5/10/2004 @ 7:30 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="NEvLRtDKT0c" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTg0MTU5ODkwM15BMl5BanBnXkFtZTYwMzgxNzY3._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Holes</h2>
+    <h3>2003</h3>
+    <p>4/29/2003 @ 9:35 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="B8_dgqfPXFg" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTI1ODkxNzg2N15BMl5BanBnXkFtZTYwMzQ2MTg2._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>The Butterfly Effect</h2>
+    <h3>2003</h3>
+    <p>1/29/2004 @ 7:00 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="dX5E0NUmQFo" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BNDk0NjYxMzIzOF5BMl5BanBnXkFtZTYwMTc1MjU3._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>X-Men 2</h2>
+    <h3>2003</h3>
+    <p>5/2/2003 @ 9:50 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="p07lBCfC2q8" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTcxNDQ5MzAyOV5BMl5BanBnXkFtZTYwMjkxMTU3._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Phone Booth</h2>
+    <h3>2002</h3>
+    <p>4/10/2003 @ 7:10 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="BTXS-5D_U8k" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTcxMDMwODg3Nl5BMl5BanBnXkFtZTYwMTM4NTY3._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Along Came Polly</h2>
+    <h3>2004</h3>
+    <p>1/24/2004 @ 9:45 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="yo_wPMW7U48" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTczMzU5NDk4MV5BMl5BanBnXkFtZTYwNDQxNzc3._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Paycheck</h2>
+    <h3>2003</h3>
+    <p>12/29/2003 @ 4:00 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="Pki6jbSbXIY" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BNTEyMjAwMDU1OV5BMl5BanBnXkFtZTcwNDQyNTkxMw@@._V1_SY317_CR1,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Lord of the Rings: The Fellowship of the Ring</h2>
+    <h3>2001</h3>
+    <p>12/18/2003 @ 1:00 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="pFeCVCKYo4Y" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjA5NjYyMDM5NV5BMl5BanBnXkFtZTYwOTU5MDY2._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Master and Commander: The Far Side of the World</h2>
+    <h3>2003</h3>
+    <p>11/28/2003 @ 9:50 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="RGPjGV5XZBc" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTA3NDUwNzAxNzZeQTJeQWpwZ15BbWU3MDQyMTUwMDE@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Haunted Mansion</h2>
+    <h3>2003</h3>
+    <p>11/27/2003 @ 7:05 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="XCwy6lW5Ixc" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjEwOTMzNjYzMl5BMl5BanBnXkFtZTcwNjczMTQyMQ@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>School of Rock</h2>
+    <h3>2003</h3>
+    <p>10/5/2003 @ 7:05 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="8bKy8ohYeSg" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTEwNTU3NzM2NDJeQTJeQWpwZ15BbWU2MDY2ODcyNw@@._V1_SY317_CR4,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Cabin Fever</h2>
+    <h3>2002</h3>
+    <p>9/13/2003 @ 9:40 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="UShtvCen6So" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BNDE0NTQwODM5M15BMl5BanBnXkFtZTYwNzQ2Nzk5._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Freaky Friday</h2>
+    <h3>2003</h3>
+    <p>8/31/2003 @ 9:25 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="JW3ZFE_GGh0" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BNDgzMzA0NDIzOV5BMl5BanBnXkFtZTcwMzcwNDAwMQ@@._V1_SY317_CR1,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>S.W.A.T.</h2>
+    <h3>2003</h3>
+    <p>8/9/2003 @ 7:00 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="F_VIM03DXWI" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTIyMDUwMDc4OF5BMl5BanBnXkFtZTYwNTY2Nzk5._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>2 Fast 2 Furious</h2>
+    <h3>2003</h3>
+    <p>6/11/2003 @ 1:20 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="wZdpNglLbt8" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTY1MTg1NDAxOV5BMl5BanBnXkFtZTcwMjg1MDI5Nw@@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Finding Nemo</h2>
+    <h3>2003</h3>
+    <p>6/2/2003 @ 9:15 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="hvj9vhA8ixY" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTQ4Mjc4NDAwN15BMl5BanBnXkFtZTgwMjgzMzk5MDE@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Italian Job</h2>
+    <h3>2003</h3>
+    <p>6/3/2003 @ 4:05 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="QAK5sJ77J78" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTYwMTUyNzAxMF5BMl5BanBnXkFtZTYwMDYwOTY3._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>Bruce Almighty</h2>
+    <h3>2003</h3>
+    <p>5/29/2003 @ 9:35 PM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="HVrGMnk5E_M" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjA0NDM5MDY2OF5BMl5BanBnXkFtZTcwNzg5OTEzMw@@._V1_SX214_AL_.jpg" width="220" height="342">
+    <h2>The Matrix Reloaded</h2>
+    <h3>2003</h3>
+    <p>5/15/2003 @ 10:00 AM
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="xlBR-T8gdFo" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTU1Njk0ODEwOF5BMl5BanBnXkFtZTYwMzA3ODc2._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <h2>Knocked Up</h2>
+    <h3>2007</h3>
+    <p>6/1/2007 @ 7:30 PM</p>
+</div>
+
+    </div>
+  </body>
+</html>
