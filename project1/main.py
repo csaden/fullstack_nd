@@ -19,6 +19,8 @@ def main(args=None):
 			
 			movies_list.append(movie)
 	
+	movie_file.close()
+	
 	ft.open_movies_page(movies_list)
 
 if __name__ == '__main__':
